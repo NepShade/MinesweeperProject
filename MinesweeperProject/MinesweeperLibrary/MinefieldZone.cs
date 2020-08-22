@@ -102,5 +102,17 @@ namespace MinesweeperLibrary
         {
             get { return _flagged; }
         }
+
+        // Proprietà che indica se la zona è minata
+        internal bool Mined
+        {
+            get { return _mined; }
+        }
+
+        // Proprietà che restituisce il numero di mine rilevate attorno alla zona
+        internal int AdjacentMines
+        {
+            get { return _adjacentMines; }
+        }
     }
 }
