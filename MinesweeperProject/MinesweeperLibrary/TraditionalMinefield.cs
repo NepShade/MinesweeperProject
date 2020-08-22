@@ -177,8 +177,25 @@ namespace MinesweeperLibrary
             return base.UncoverZone(x, y, out zoneMined, out adjacentMines);
         }
 
+        // Metodo che prova a controllare se la zona scoperta dalle coordinate specificate è minata
+        public override bool IsUncoveredZoneMined(int x, int y, out bool? zoneMined)
+        {
+            // se le coordinate della prima zona non sono state acquisite...
+            if (!_initialZoneCoordinatesAcquired)
+            {
+                // ...si comunica che l'operazione è fallita...
+                zoneMined = null;
+                return false;
+            }
+            else
+            {
+                // ...altrimenti si richiama la definizione del metodo stabilita nella classe base
+                return base.IsUncoveredZoneMined(x, y, out zoneMined);
+            }
+        }
+
         // Metodo che prova a controllare se la zona dalle coordinate specificate è minata
-        public override bool IsZoneMined(int x, int y, out bool? zoneMined)
+        internal override bool IsZoneMined(int x, int y, out bool? zoneMined)
         {
             // se le coordinate della prima zona non sono state acquisite...
             if (!_initialZoneCoordinatesAcquired)
@@ -194,8 +211,25 @@ namespace MinesweeperLibrary
             }
         }
 
+        // Metodo che prova a restituire il numero di mine adiacenti alla zona scoperta dalle coordinate specificate
+        public override bool GetUncoveredZoneAdjacentMines(int x, int y, out int? adjacentMines)
+        {
+            // se le coordinate della prima zona non sono state acquisite...
+            if (!_initialZoneCoordinatesAcquired)
+            {
+                // ...si comunica che l'operazione è fallita...
+                adjacentMines = null;
+                return false;
+            }
+            else
+            {
+                // ...altrimenti si richiama la definizione del metodo stabilita nella classe base
+                return base.GetUncoveredZoneAdjacentMines(x, y, out adjacentMines);
+            }
+        }
+
         // Metodo che prova a restituire il numero di mine adiacenti alla zona dalle coordinate specificate
-        public override bool GetZoneAdjacentMines(int x, int y, out int? adjacentMines)
+        internal override bool GetZoneAdjacentMines(int x, int y, out int? adjacentMines)
         {
             // se le coordinate della prima zona non sono state acquisite...
             if (!_initialZoneCoordinatesAcquired)

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace MinesweeperLibrary
 {
     // Classe astratta rappresentante un campo minato
-    abstract public class Minefield
+    public abstract class Minefield
     {
         // Attributi della classe
         // dimensione minima e massima di un lato di un campo minato
@@ -326,8 +326,8 @@ namespace MinesweeperLibrary
             }
         }
 
-        // Metodo che prova a controllare se la zona dalle coordinate specificate è minata
-        public virtual bool IsZoneMined(int x, int y, out bool? zoneMined)
+        // Metodo che prova a controllare se la zona scoperta dalle coordinate specificate è minata
+        public virtual bool IsUncoveredZoneMined(int x, int y, out bool? zoneMined)
         {
             // se le coordinate sono valide e la zona è scoperta...
             if (AreCoordinatesValid(x, y) && !_minefield[x, y].Covered)
@@ -344,14 +344,50 @@ namespace MinesweeperLibrary
             }
         }
 
-        // Metodo che prova a restituire il numero di mine adiacenti alla zona dalle coordinate specificate
-        public virtual bool GetZoneAdjacentMines(int x, int y, out int? adjacentMines)
+        // Metodo che prova a controllare se la zona dalle coordinate specificate è minata
+        internal virtual bool IsZoneMined(int x, int y, out bool? zoneMined)
+        {
+            // se le coordinate sono valide...
+            if (AreCoordinatesValid(x, y))
+            {
+                // ...allora si controlla se la zona è minata...
+                zoneMined = _minefield[x, y].Mined;
+                return true;
+            }
+            else
+            {
+                // ...altrimenti si comunica che l'operazione è fallita
+                zoneMined = null;
+                return false;
+            }
+        }
+
+        // Metodo che prova a restituire il numero di mine adiacenti alla zona scoperta dalle coordinate specificate
+        public virtual bool GetUncoveredZoneAdjacentMines(int x, int y, out int? adjacentMines)
         {
             // se le coordinate sono valide e la zona è scoperta...
             if (AreCoordinatesValid(x, y) && !_minefield[x, y].Covered)
             {
                 // ...allora si restituisce il numero di mine adiacenti alla zona...
                 adjacentMines = _minefield[x, y].GetAdjacentMines();
+                return true;
+            }
+            else
+            {
+                // ...altrimenti si comunica che l'operazione è fallita
+                adjacentMines = null;
+                return false;
+            }
+        }
+
+        // Metodo che prova a restituire il numero di mine adiacenti alla zona dalle coordinate specificate
+        internal virtual bool GetZoneAdjacentMines(int x, int y, out int? adjacentMines)
+        {
+            // se le coordinate sono valide...
+            if (AreCoordinatesValid(x, y))
+            {
+                // ...allora si restituisce il numero di mine adiacenti alla zona...
+                adjacentMines = _minefield[x, y].AdjacentMines;
                 return true;
             }
             else
