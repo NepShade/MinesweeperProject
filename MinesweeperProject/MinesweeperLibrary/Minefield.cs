@@ -415,6 +415,20 @@ namespace MinesweeperLibrary
             return copyOfMinesCoordinates;
         }
 
+        // Metodo che indica se tutte le zone del campo minato sono coperte e non contrassegnate come minate
+        internal bool AreZonesCoveredAndUnflagged()
+        {
+            // variabile che indica se tutte le zone del campo minato sono coperte e non contrassegnate
+            bool minefieldCoveredAndClean = true;
+
+            for (int y = 0; minefieldCoveredAndClean && y < Height; y++)
+                for (int x = 0; minefieldCoveredAndClean && x < Length; x++)
+                    if (!_minefield[x, y].Covered || _minefield[x, y].Flagged)
+                        minefieldCoveredAndClean = false;
+
+            return minefieldCoveredAndClean;
+        }
+
         // Metodo che restituisce il massimo numero di mine che può contenere un campo minato dalle dimensioni indicate
         public static int GetMaxMines(int minefieldLength, int minefieldHeight)
         {
