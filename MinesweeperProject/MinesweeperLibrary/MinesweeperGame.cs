@@ -391,6 +391,32 @@ namespace MinesweeperLibrary
             return flaggedZones == flaggedMinedZones;
         }
 
+        // Metodo che restituisce una breve descrizione della modalità di gioco specificata
+        public static string DescribeModality(GameModality modality)
+        {
+            // descrizione della modalità di gioco
+            string modalityDescription = null;
+
+            // si stabilisce quale descrizione restituire
+            switch (modality)
+            {
+                case GameModality.Classica:
+                    modalityDescription = "Alla prima mina colpita si perde la partita";
+                    break;
+                case GameModality.Agevolata:
+                    modalityDescription = "Dopo aver colpito " + AttemptsAgevolata + " mine si perde la partita";
+                    break;
+                case GameModality.Semplificata:
+                    modalityDescription = "Dopo aver colpito più mine si perde la partita";
+                    break;
+                case GameModality.Sicura:
+                    modalityDescription = "Le mine colpite non fanno perdere la partita";
+                    break;
+            }
+
+            return modalityDescription;
+        }
+
         // Proprietà che restituisce la modalità di gioco scelta
         public GameModality SelectedModality
         {
