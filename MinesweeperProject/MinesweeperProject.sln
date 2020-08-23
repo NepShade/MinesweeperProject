@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30406.217
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MinesweeperLibrary", "MinesweeperLibrary\MinesweeperLibrary.csproj", "{98026F3F-4C93-47F7-97B9-79123FDC6116}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MinesweeperLibrary", "MinesweeperLibrary\MinesweeperLibrary.csproj", "{98026F3F-4C93-47F7-97B9-79123FDC6116}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MinesweeperGUI", "MinesweeperGUI\MinesweeperGUI.csproj", "{D64C7299-7FAE-4923-BD13-6CFB74EBC2E5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{98026F3F-4C93-47F7-97B9-79123FDC6116}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{98026F3F-4C93-47F7-97B9-79123FDC6116}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{98026F3F-4C93-47F7-97B9-79123FDC6116}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D64C7299-7FAE-4923-BD13-6CFB74EBC2E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D64C7299-7FAE-4923-BD13-6CFB74EBC2E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D64C7299-7FAE-4923-BD13-6CFB74EBC2E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D64C7299-7FAE-4923-BD13-6CFB74EBC2E5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
