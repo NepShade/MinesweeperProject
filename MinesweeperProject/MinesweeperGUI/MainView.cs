@@ -56,5 +56,93 @@ namespace MinesweeperGUI
             int beginButtonY = ((GameMenuHeight - _gameButton.Height) / 2) + MainMenuHeight;
             _gameButton.Location = new Point(beginButtonX, beginButtonY);
         }
+
+        // Metodo che imposta l'immagine del bottone della partita
+        public void SetGameButtonImage(Image buttonImage)
+        {
+            _gameButton.Image = buttonImage;
+        }
+
+        // Metodo che avvia il timer della partita
+        public void StartGameTimer()
+        {
+            _gameTimer.Start();
+        }
+
+        // Metodo che arresta il timer della partita
+        public void StopGameTimer()
+        {
+            _gameTimer.Stop();
+        }
+
+        // Proprietà che restituisce e imposta il testo dell'etichetta relativa al numero di zone da contrassegnare
+        public string MinesCounterLabel
+        {
+            get { return _minesCounterLabel.Text; }
+            set { _minesCounterLabel.Text = value; }
+        }
+
+        // Proprietà che restituisce e imposta il testo dell'etichetta relativa alla durata della partita
+        public string GameDurationLabel
+        {
+            get { return _gameDurationLabel.Text; }
+            set { _gameDurationLabel.Text = value; }
+        }
+
+        // Proprietà che abilita e disabilita l'opzione 'info' del menu
+        public bool InfoOptionEnabled
+        {
+            get { return _infoToolStripMenuItem.Enabled; }
+            set { _infoToolStripMenuItem.Enabled = value; }
+        }
+
+        // Proprietà che aggiunge e rimuove un gestore evento al click dell'opzione 'nuova' del menu
+        public event EventHandler NewOptionClick
+        {
+            add { _newToolStripMenuItem.Click += value; }
+            remove { _newToolStripMenuItem.Click -= value; }
+        }
+
+        // Proprietà che aggiunge e rimuove un gestore evento al click dell'opzione 'configura' del menu
+        public event EventHandler SettingsOptionClick
+        {
+            add { _settingsToolStripMenuItem.Click += value; }
+            remove { _settingsToolStripMenuItem.Click -= value; }
+        }
+
+        // Proprietà che aggiunge e rimuove un gestore evento al click dell'opzione 'regole' del menu
+        public event EventHandler RulesOptionClick
+        {
+            add { _rulesToolStripMenuItem.Click += value; }
+            remove { _rulesToolStripMenuItem.Click -= value; }
+        }
+
+        // Proprietà che aggiunge e rimuove un gestore evento al click dell'opzione 'esci' del menu
+        public event EventHandler ExitOptionClick
+        {
+            add { _exitToolStripMenuItem.Click += value; }
+            remove { _exitToolStripMenuItem.Click -= value; }
+        }
+
+        // Proprietà che aggiunge e rimuove un gestore evento al click dell'opzione 'info' del menu
+        public event EventHandler InfoOptionClick
+        {
+            add { _infoToolStripMenuItem.Click += value; }
+            remove { _infoToolStripMenuItem.Click -= value; }
+        }
+
+        // Proprietà che aggiunge e rimuove un gestore evento al click del bottone della partita
+        public event EventHandler GameButtonClick
+        {
+            add { _gameButton.Click += value; }
+            remove { _gameButton.Click -= value; }
+        }
+
+        // Proprietà che aggiunge e rimuove un gestore evento al tick del timer della partita
+        public event EventHandler GameTimerTick
+        {
+            add { _gameTimer.Tick += value; }
+            remove { _gameTimer.Tick -= value; }
+        }
     }
 }
