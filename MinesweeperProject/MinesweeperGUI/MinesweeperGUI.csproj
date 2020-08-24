@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IMemento.cs" />
     <Compile Include="InfoView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -66,6 +67,7 @@
     <Compile Include="RulesView.Designer.cs">
       <DependentUpon>RulesView.cs</DependentUpon>
     </Compile>
+    <Compile Include="SettingsMemento.cs" />
     <Compile Include="SettingsView.cs">
       <SubType>Form</SubType>
     </Compile>
