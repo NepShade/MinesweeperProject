@@ -53,6 +53,9 @@
     <Compile Include="InfoView.Designer.cs">
       <DependentUpon>InfoView.cs</DependentUpon>
     </Compile>
+    <Compile Include="InteractableZone.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="MainView.cs">
       <SubType>Form</SubType>
     </Compile>
