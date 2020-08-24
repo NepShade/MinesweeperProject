@@ -67,6 +67,7 @@
     <Compile Include="RulesView.Designer.cs">
       <DependentUpon>RulesView.cs</DependentUpon>
     </Compile>
+    <Compile Include="SettingsController.cs" />
     <Compile Include="SettingsMemento.cs" />
     <Compile Include="SettingsView.cs">
       <SubType>Form</SubType>
@@ -107,6 +108,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MinesweeperLibrary\MinesweeperLibrary.csproj">
+      <Project>{98026f3f-4c93-47f7-97b9-79123fdc6116}</Project>
+      <Name>MinesweeperLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
