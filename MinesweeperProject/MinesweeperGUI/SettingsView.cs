@@ -121,14 +121,14 @@ namespace MinesweeperGUI
         public event EventHandler ConfirmButtonClick
         {
             add { _okButton.Click += value; }
-            remove { _okButton.Click += value; }
+            remove { _okButton.Click -= value; }
         }
 
         // Proprietà che aggiunge e rimuove un gestore evento al click del 'pulsante di rifiuto'
         public event EventHandler RefuteButtonClick
         {
             add { _cancelButton.Click += value; }
-            remove { _cancelButton.Click += value; }
+            remove { _cancelButton.Click -= value; }
         }
     }
 }
