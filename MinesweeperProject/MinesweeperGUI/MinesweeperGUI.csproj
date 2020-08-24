@@ -92,6 +92,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="RulesView.resx">
       <DependentUpon>RulesView.cs</DependentUpon>
@@ -117,6 +118,60 @@
       <Project>{98026f3f-4c93-47f7-97b9-79123fdc6116}</Project>
       <Name>MinesweeperLibrary</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CoveredZone.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DefeatButton.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ErroredFlaggedZone.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FlaggedZone.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\InitialButton.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MinedZone.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MinesweeperRules.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RedMinedZone.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\UncoveredZone0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\UncoveredZone1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\UncoveredZone2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\UncoveredZone3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\UncoveredZone4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\UncoveredZone5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\UncoveredZone6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\UncoveredZone7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\UncoveredZone8.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\VictoryButton.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
