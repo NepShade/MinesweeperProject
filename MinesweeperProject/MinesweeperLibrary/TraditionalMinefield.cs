@@ -260,5 +260,21 @@ namespace MinesweeperLibrary
                 return base.GetMinesCoordinates();
             }
         }
+
+        // Metodo che indica se tutte le zone del campo minato sono coperte e non contrassegnate come minate
+        internal override bool AreZonesCoveredAndUnflagged()
+        {
+            // se le coordinate della prima zona non sono state acquisite...
+            if (!_initialZoneCoordinatesAcquired)
+            {
+                // ...si restituisce un risultato positivo... 
+                return true;
+            }
+            else
+            {
+                // ...altrimenti si richiama la definizione del metodo stabilita nella classe base
+                return base.AreZonesCoveredAndUnflagged();
+            }
+        }
     }
 }

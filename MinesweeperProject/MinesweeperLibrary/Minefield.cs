@@ -416,7 +416,7 @@ namespace MinesweeperLibrary
         }
 
         // Metodo che indica se tutte le zone del campo minato sono coperte e non contrassegnate come minate
-        internal bool AreZonesCoveredAndUnflagged()
+        internal virtual bool AreZonesCoveredAndUnflagged()
         {
             // variabile che indica se tutte le zone del campo minato sono coperte e non contrassegnate
             bool minefieldCoveredAndClean = true;
