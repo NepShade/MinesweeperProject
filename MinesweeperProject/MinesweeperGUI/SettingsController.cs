@@ -233,15 +233,32 @@ namespace MinesweeperGUI
                 _settings.MinefieldMinesMinMaxInfoVisibility = false;
             }
 
-            // si impostano i nuovi valori dei controlli di scorrimento
+            // nuovi valori da associare ai controlli di scorrimento
+            int newLength = 0;
+            int newHeight = 0;
+            int newMines = 0;
+            // si memorizzano le caratteristiche del campo minato associate alla difficoltà selezionata
             foreach (Tuple<string, int, int, int> entry in _difficultiesList)
                 if (selectedDifficulty.Equals(entry.Item1))
                 {
-                    _settings.MinefieldLength.Value = entry.Item2;
-                    _settings.MinefieldHeight.Value = entry.Item3;
-                    _settings.MinefieldMines.Value = entry.Item4;
+                    newLength = entry.Item2;
+                    newHeight = entry.Item3;
+                    newMines = entry.Item4;
                     break;
                 }
+
+            // si memorizzano i valori attuali di lunghezza e altezza dai controlli di scorrimento
+            int actualLength = (int)_settings.MinefieldLength.Value;
+            int actualHeight = (int)_settings.MinefieldHeight.Value;
+            // si impostano i nuovi valori dei controlli di scorrimento
+            _settings.MinefieldLength.Value = newLength;
+            _settings.MinefieldHeight.Value = newHeight;
+            _settings.MinefieldMines.Value = newMines;
+
+            // se i vecchi valori di lunghezza e altezza combaciano con i nuovi valori allora si aggiorna
+            // manualmente il massimo numero di mine inseribili dall'utente all'interno del form
+            if (actualLength == newLength && actualHeight == newHeight)
+                UpdateMaxMines(sender, e);
         }
 
         // Metodo che aggiorna il massimo numero di mine inseribili dall'utente nel controllo di scorrimento
