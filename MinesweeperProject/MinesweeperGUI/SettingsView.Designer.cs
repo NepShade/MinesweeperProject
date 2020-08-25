@@ -68,6 +68,7 @@
             // 
             // _modalityComboBox
             // 
+            this._modalityComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this._modalityComboBox.FormattingEnabled = true;
             this._modalityComboBox.Location = new System.Drawing.Point(9, 17);
             this._modalityComboBox.Name = "_modalityComboBox";
@@ -105,6 +106,7 @@
             // 
             // _difficultyComboBox
             // 
+            this._difficultyComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this._difficultyComboBox.FormattingEnabled = true;
             this._difficultyComboBox.Location = new System.Drawing.Point(9, 19);
             this._difficultyComboBox.Name = "_difficultyComboBox";
@@ -222,6 +224,7 @@
             // 
             // _minefieldComboBox
             // 
+            this._minefieldComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this._minefieldComboBox.FormattingEnabled = true;
             this._minefieldComboBox.Location = new System.Drawing.Point(9, 17);
             this._minefieldComboBox.Name = "_minefieldComboBox";
@@ -263,6 +266,7 @@
             this._minefieldGroupBox.ResumeLayout(false);
             this._minefieldGroupBox.PerformLayout();
             this.ResumeLayout(false);
+
         }
 
         #endregion
