@@ -16,7 +16,7 @@ namespace MinesweeperGUI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainView());
+            new MainController();
         }
     }
 }

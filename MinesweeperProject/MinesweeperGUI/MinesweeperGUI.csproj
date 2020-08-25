@@ -56,6 +56,7 @@
     <Compile Include="InteractableZone.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="MainController.cs" />
     <Compile Include="MainView.cs">
       <SubType>Form</SubType>
     </Compile>
