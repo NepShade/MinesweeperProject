@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MinesweeperGUI
@@ -20,11 +16,11 @@ namespace MinesweeperGUI
         private readonly MouseButtons _mouseButtonClicked;
 
         // Costruttore che memorizza dati relativi a una zona interagibile
-        public InteractableZoneEventArgs(int x, int y, InteractableZone.ZoneState zoneState, MouseButtons mouseButton)
+        public InteractableZoneEventArgs(int x, int y, InteractableZone.ZoneState state, MouseButtons mouseButton)
         {
             _minefieldZoneX = x;
             _minefieldZoneY = y;
-            _interactableZoneState = zoneState;
+            _interactableZoneState = state;
             _mouseButtonClicked = mouseButton;
         }
 

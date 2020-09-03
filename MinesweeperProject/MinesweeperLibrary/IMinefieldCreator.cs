@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace MinesweeperLibrary
+﻿namespace MinesweeperLibrary
 {
     // Interfaccia di un creatore di campi minati
     public interface IMinefieldCreator

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace MinesweeperLibrary
+﻿namespace MinesweeperLibrary
 {
     // Classe rappresentante un creatore di campi minati 'tradizionali'
     public class TraditionalMinefieldCreator : IMinefieldCreator
