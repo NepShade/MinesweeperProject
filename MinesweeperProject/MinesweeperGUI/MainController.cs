@@ -27,8 +27,6 @@ namespace MinesweeperGUI
         private IMinefieldCreator _minefieldCreator;
         // campo minato
         private Minefield _minefield;
-        // insieme di zone interagibili dall'utente nel form di gioco
-        private InteractableZone[,] _interactableZones;
         // durata di una partita
         private TimeSpan _gameDuration;
         // numero di zone da contrassegnare come minate per vincere la partita
@@ -45,8 +43,6 @@ namespace MinesweeperGUI
             // si inizializzano gli eventi e i controlli del form principale di gioco
             InitializeFormEvents();
             InitializeFormControls();
-            // si creano e si inizializzano le zone interagibili
-            CreateInteractableZones();
             // viene visualizzato il form principale di gioco come finestra di dialogo modale
             _mainForm.ShowDialog();
         }
@@ -64,6 +60,8 @@ namespace MinesweeperGUI
             _mainForm.GameButtonClick += NewGame;
             // si crea un gestore eventi per il tick del timer della partita
             _mainForm.GameTimerTick += TimePassed;
+            // si crea un gestore eventi per il click delle zone interagibili
+            _mainForm.InteractableZoneClick += InteractableZoneClicked;
         }
 
         // Metodo che inizializza i controlli del form principale di gioco
@@ -94,72 +92,6 @@ namespace MinesweeperGUI
             _mainForm.InfoOptionEnabled = false;
         }
 
-        // Metodo che crea e inizializza le zone interagibili
-        private void CreateInteractableZones()
-        {
-            // creazione e inizializzazione di una matrice di zone interagibili di dimensioni massime
-            _interactableZones = new InteractableZone[Minefield.MaxSide, Minefield.MaxSide];
-            for (int y = 0; y < Minefield.MaxSide; y++)
-                for (int x = 0; x < Minefield.MaxSide; x++)
-                {
-                    // si calcolano le coordinate di posizione della zona interagibile
-                    int positionX = MainView.EdgeSpacing + (Properties.Resources.CoveredZone.Width * x);
-                    int positionY = MainView.TopEdgeSpacing + (Properties.Resources.CoveredZone.Height * y);
-
-                    // si crea una zona interagibile e se ne impostano le proprietà
-                    _interactableZones[x, y] = new InteractableZone(x, y)
-                    {
-                        Width = Properties.Resources.CoveredZone.Width,
-                        Height = Properties.Resources.CoveredZone.Height,
-                        Location = new Point(positionX, positionY),
-                        Enabled = false,
-                        Visible = false
-                    };
-
-                    // si aggiunge un gestore eventi al click della zona interagibile
-                    _interactableZones[x, y].MouseClick += InteractableZoneSelected;
-                    // si aggiunge la zona interagibile alla raccolta di controlli del form
-                    _mainForm.Controls.Add(_interactableZones[x, y]);
-                }
-        }
-
-        // Metodo che ridimensiona il form principale di gioco e che visualizza le zone interagibili
-        private void SetInteractableZones()
-        {
-            // si calcolano le nuove dimensioni del form principale di gioco per poi ridimensionarlo
-            int lengthMinefieldForm = Properties.Resources.CoveredZone.Width * _length;
-            int heightMinefieldForm = Properties.Resources.CoveredZone.Height * _height;
-            _mainForm.ResizeClientArea(lengthMinefieldForm, heightMinefieldForm);
-
-            // si stabilisce quali zone interagibili abilitare e rendere visibili
-            for (int y = 0; y < Minefield.MaxSide; y++)
-                for (int x = 0; x < Minefield.MaxSide; x++)
-                {
-                    if (x < _length && y < _height)
-                    {
-                        // se le coordinate esaminate sono valide rispetto alle dimensioni del campo
-                        // minato allora si rende la zona interagibile visibile e capace di rispondere
-                        // alle interazioni con gli utenti...
-                        _interactableZones[x, y].Visible = true;
-                        _interactableZones[x, y].Enabled = true;
-                        // ...inoltre si stabilisce l'immagine e lo stato iniziale da associare a tale zona
-                        _interactableZones[x, y].Image = Properties.Resources.CoveredZone;
-                        _interactableZones[x, y].Status = InteractableZone.ZoneState.Covered;
-                    }
-                    else
-                    {
-                        // se le coordinate esaminate non sono valide rispetto alle dimensioni del
-                        // campo minato allora si rende la zona interagibile invisibile e incapace
-                        // di rispondere alle interazioni con gli utenti
-                        _interactableZones[x, y].Visible = false;
-                        _interactableZones[x, y].Enabled = false;
-                    }
-                }
-
-            // si annota che nessuna zona interagibile è stata ancora scoperta dall'utente
-            _interactableZoneUncovered = false;
-        }
-
         // Metodo eseguito quando si vuole iniziare una nuova partita
         private void NewGame(object sender, EventArgs e)
         {
@@ -174,7 +106,8 @@ namespace MinesweeperGUI
                 if (_interactableZoneUncovered)
                 {
                     // ...si reimpostano le zone interagibili...
-                    SetInteractableZones();
+                    _mainForm.SetInteractableMinefieldSize(_length, _height);
+                    _interactableZoneUncovered = false;
                     // ...si riconfigurano i controlli del form di gioco...
                     SetFormControls();
                     // ...si crea un nuovo campo minato dalle medesime caratteristiche...
@@ -255,7 +188,8 @@ namespace MinesweeperGUI
                 // si crea un gestore eventi per la scoperta di una zona del campo minato
                 _minesweeperGame.ZoneUncovered += UpdateInteractableZone;
                 // si configurano le zone interagibili e i controlli del form di gioco
-                SetInteractableZones();
+                _mainForm.SetInteractableMinefieldSize(_length, _height);
+                _interactableZoneUncovered = false;
                 SetFormControls();
                 // si memorizza lo stato attuale del form delle impostazioni
                 _settingsMemento = _settingsController.SaveState();
@@ -273,7 +207,8 @@ namespace MinesweeperGUI
                     // si acquisisce e si analizza la configurazione di gioco più recente
                     AcquireNewConfiguration();
                     // si configurano le zone interagibili e i controlli del form di gioco
-                    SetInteractableZones();
+                    _mainForm.SetInteractableMinefieldSize(_length, _height);
+                    _interactableZoneUncovered = false;
                     SetFormControls();
                     // si memorizza lo stato attuale del form delle impostazioni
                     _settingsMemento = newMemento;
@@ -316,21 +251,18 @@ namespace MinesweeperGUI
         }
 
         // Metodo eseguito quando l'utente clicca su una zona interagibile
-        private void InteractableZoneSelected(object sender, MouseEventArgs e)
+        private void InteractableZoneClicked(object sender, InteractableZoneEventArgs e)
         {
-            // conversione esplicita del riferimento al mittente in zona interagibile
-            InteractableZone selectedZone = (InteractableZone)sender;
-
-            if (e.Button == MouseButtons.Left)
+            if (e.MouseButtonClicked == MouseButtons.Left)
             {
                 // se si è premuto il pulsante sinistro del mouse la zona viene scoperta
-                UncoverZone(selectedZone.X, selectedZone.Y);
+                UncoverZone(e.X, e.Y);
             }
-            else if (e.Button == MouseButtons.Right)
+            else if (e.MouseButtonClicked == MouseButtons.Right)
             {
                 // se si è premuto il pulsante destro del mouse la zona viene contrassegnata
                 // come minata oppure ripulita (ossia NON contrassegnata come minata)
-                FlagUnflagZone(selectedZone.X, selectedZone.Y);
+                FlagUnflagZone(e.X, e.Y);
             }
         }
 
@@ -343,20 +275,18 @@ namespace MinesweeperGUI
                 // a operazione riuscita si valuta se si abbia contrassegnato o "ripulito" la zona
                 if (zoneIsFlagged == true)
                 {
-                    // si aggiorna l'immagine e lo stato della zona interagibile per indicare che
-                    // la corrispondente zona del campo minato è stata contrassegnata come minata
-                    _interactableZones[x, y].Image = Properties.Resources.FlaggedZone;
-                    _interactableZones[x, y].Status = InteractableZone.ZoneState.Flagged;
+                    // si aggiorna lo stato della zona interagibile per indicare che la
+                    // corrispondente zona del campo minato è stata contrassegnata come minata
+                    _mainForm.SetInteractableZoneState(x, y, InteractableZone.ZoneState.Flagged);
                     // si decrementa il numero di zone da contrassegnare come minate
                     // aggiornando anche l'etichetta-contatore nel form di gioco
                     UpdateMinesCounterLabel(--_zonesToFlag);
                 }
                 else if (zoneIsFlagged == false)
                 {
-                    // si aggiorna l'immagine e lo stato della zona interagibile per indicare che
+                    // si aggiorna lo stato della zona interagibile per indicare che
                     // la corrispondente zona del campo minato è stata "ripulita"
-                    _interactableZones[x, y].Image = Properties.Resources.CoveredZone;
-                    _interactableZones[x, y].Status = InteractableZone.ZoneState.Covered;
+                    _mainForm.SetInteractableZoneState(x, y, InteractableZone.ZoneState.Covered);
                     // si incrementa il numero di zone da contrassegnare come minate
                     // aggiornando anche l'etichetta-contatore nel form di gioco
                     UpdateMinesCounterLabel(++_zonesToFlag);
@@ -398,48 +328,45 @@ namespace MinesweeperGUI
         {
             if (e.Mined)
             {
-                // se la zona scoperta è minata si modifica l'immagine e lo stato della
-                // corrispondente zona interagibile per indicare una zona minata esplosa
-                _interactableZones[e.X, e.Y].Image = Properties.Resources.RedMinedZone;
-                _interactableZones[e.X, e.Y].Status = InteractableZone.ZoneState.Mined;
+                // si aggiorna lo stato della zona interagibile per indicare che la
+                // corrispondente zona del campo minato è stata scoperta ed era minata
+                _mainForm.SetInteractableZoneState(e.X, e.Y, InteractableZone.ZoneState.Exploded);
                 // si riduce il numero di zone da contrassegnare come minate
                 // aggiornando anche l'etichetta-contatore nel form di gioco
                 UpdateMinesCounterLabel(--_zonesToFlag);
             }
             else
             {
-                // se la zona scoperta non è minata si modifica lo stato della corrispondente
-                // zona interagibile per indicare una zona sicura...
-                _interactableZones[e.X, e.Y].Status = InteractableZone.ZoneState.Safe;
-                // ...assieme alla sua immagine per riflettere il numero di mine rilevate attorno alla zona
+                // si aggiorna lo stato della zona interagibile per indicare che la
+                // corrispondente zona del campo minato è stata scoperta ed era sicura
                 switch (e.AdjacentMines)
                 {
                     case 0:
-                        _interactableZones[e.X, e.Y].Image = Properties.Resources.UncoveredZone0;
+                        _mainForm.SetInteractableZoneState(e.X, e.Y, InteractableZone.ZoneState.Safe0);
                         break;
                     case 1:
-                        _interactableZones[e.X, e.Y].Image = Properties.Resources.UncoveredZone1;
+                        _mainForm.SetInteractableZoneState(e.X, e.Y, InteractableZone.ZoneState.Safe1);
                         break;
                     case 2:
-                        _interactableZones[e.X, e.Y].Image = Properties.Resources.UncoveredZone2;
+                        _mainForm.SetInteractableZoneState(e.X, e.Y, InteractableZone.ZoneState.Safe2);
                         break;
                     case 3:
-                        _interactableZones[e.X, e.Y].Image = Properties.Resources.UncoveredZone3;
+                        _mainForm.SetInteractableZoneState(e.X, e.Y, InteractableZone.ZoneState.Safe3);
                         break;
                     case 4:
-                        _interactableZones[e.X, e.Y].Image = Properties.Resources.UncoveredZone4;
+                        _mainForm.SetInteractableZoneState(e.X, e.Y, InteractableZone.ZoneState.Safe4);
                         break;
                     case 5:
-                        _interactableZones[e.X, e.Y].Image = Properties.Resources.UncoveredZone5;
+                        _mainForm.SetInteractableZoneState(e.X, e.Y, InteractableZone.ZoneState.Safe5);
                         break;
                     case 6:
-                        _interactableZones[e.X, e.Y].Image = Properties.Resources.UncoveredZone6;
+                        _mainForm.SetInteractableZoneState(e.X, e.Y, InteractableZone.ZoneState.Safe6);
                         break;
                     case 7:
-                        _interactableZones[e.X, e.Y].Image = Properties.Resources.UncoveredZone7;
+                        _mainForm.SetInteractableZoneState(e.X, e.Y, InteractableZone.ZoneState.Safe7);
                         break;
                     case 8:
-                        _interactableZones[e.X, e.Y].Image = Properties.Resources.UncoveredZone8;
+                        _mainForm.SetInteractableZoneState(e.X, e.Y, InteractableZone.ZoneState.Safe8);
                         break;
                 }
             }
@@ -452,14 +379,11 @@ namespace MinesweeperGUI
             for (int y = 0; y < _height; y++)
                 for (int x = 0; x < _length; x++)
                 {
-                    // si disabilita la risposta della zona interagibile alle interazioni degli utenti
-                    _interactableZones[x, y].Enabled = false;
-
                     // se la zona interagibile è coperta e non contrassegnata...
-                    if (_interactableZones[x, y].Status == InteractableZone.ZoneState.Covered)
+                    if (_mainForm.GetInteractableZoneState(x, y) == InteractableZone.ZoneState.Covered)
                     {
-                        // ...allora si modifica la sua immagine per indicare una zona contrassegnata
-                        _interactableZones[x, y].Image = Properties.Resources.FlaggedZone;
+                        // ...allora si modifica il suo stato per indicare una zona contrassegnata
+                        _mainForm.SetInteractableZoneState(x, y, InteractableZone.ZoneState.Flagged);
                         // si riduce il numero di zone da contrassegnare come minate
                         // aggiornando anche l'etichetta-contatore nel form di gioco
                         UpdateMinesCounterLabel(--_zonesToFlag);
@@ -480,27 +404,21 @@ namespace MinesweeperGUI
             for (int y = 0; y < _height; y++)
                 for (int x = 0; x < _length; x++)
                 {
-                    // si disabilita la risposta della zona interagibile alle interazioni degli utenti
-                    _interactableZones[x, y].Enabled = false;
-
                     if (minesCoordinates.Contains(new Tuple<int, int>(x, y)))
                     {
                         // se le coordinate analizzate fanno riferimento a una zona minata ma la corrispondente
-                        // zona interagibile non è stata contrassegnata allora l'immagine e lo stato della
-                        // zona interagibile vengono modificate per indicare una zona minata non individuata
-                        if (_interactableZones[x, y].Status == InteractableZone.ZoneState.Covered)
-                        {
-                            _interactableZones[x, y].Image = Properties.Resources.MinedZone;
-                            _interactableZones[x, y].Status = InteractableZone.ZoneState.Mined;
-                        }
+                        // zona interagibile non è stata contrassegnata allora lo stato della zona interagibile
+                        // viene modificato per indicare una zona minata non individuata
+                        if (_mainForm.GetInteractableZoneState(x, y) == InteractableZone.ZoneState.Covered)
+                            _mainForm.SetInteractableZoneState(x, y, InteractableZone.ZoneState.Mined);
                     }
                     else
                     {
                         // se le coordinate analizzate non fanno riferimento a una zona minata ma la
-                        // corrispondente zona interagibile è stata contrassegnata allora l'immagine della
-                        // zona interagibile viene modificata per indicare una zona erroneamente contrassegnata
-                        if (_interactableZones[x, y].Status == InteractableZone.ZoneState.Flagged)
-                            _interactableZones[x, y].Image = Properties.Resources.ErroredFlaggedZone;
+                        // corrispondente zona interagibile è stata contrassegnata allora lo stato della zona
+                        // interagibile viene modificato per indicare una zona erroneamente contrassegnata
+                        if (_mainForm.GetInteractableZoneState(x, y) == InteractableZone.ZoneState.Flagged)
+                            _mainForm.SetInteractableZoneState(x, y, InteractableZone.ZoneState.IncorrectlyFlagged);
                     }
                 }
 
@@ -509,7 +427,8 @@ namespace MinesweeperGUI
             // si conteggiano tutte le zone minate che non sono state contrassegnate al termine della partita
             for (int y = 0; y < _height; y++)
                 for (int x = 0; x < _length; x++)
-                    if (_interactableZones[x, y].Status == InteractableZone.ZoneState.Mined)
+                    if (_mainForm.GetInteractableZoneState(x, y) == InteractableZone.ZoneState.Mined ||
+                        _mainForm.GetInteractableZoneState(x, y) == InteractableZone.ZoneState.Exploded)
                         minesNotFlagged++;
 
             // si aggiorna l'etichetta-contatore per indicare la quantità totale di mine non individuate
