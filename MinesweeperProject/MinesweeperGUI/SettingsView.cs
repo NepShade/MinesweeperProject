@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace MinesweeperGUI
@@ -10,6 +11,53 @@ namespace MinesweeperGUI
         public SettingsView()
         {
             InitializeComponent();
+        }
+
+        // Metodo che crea e restituisce un memento delle opzioni selezionate
+        internal IMemento SaveState()
+        {
+            // lista contenente le opzioni selezionate
+            List<int> settingsOptions = new List<int>
+            {
+                // si memorizzano gli indici degli elementi selezionati nelle caselle combinate
+                MinefieldComboBox.SelectedIndex,
+                ModalityComboBox.SelectedIndex,
+                DifficultyComboBox.SelectedIndex,
+                // si memorizzano i valori dei controlli di scorrimento
+                (int)MinefieldLength.Value,
+                (int)MinefieldHeight.Value,
+                (int)MinefieldMines.Value
+            };
+
+            return new SettingsMemento(settingsOptions.ToArray());
+        }
+
+        // Metodo che ripristina le opzioni selezionate in precedenza
+        internal void RestoreState(IMemento memento)
+        {
+            if (memento != null)
+                try
+                {
+                    // si converte il memento nel tipo opportuno per poi acquisirne lo stato memorizzato
+                    SettingsMemento settingsMemento = (SettingsMemento)memento;
+                    int[] settingsOptions = settingsMemento.GetState();
+
+                    // si seleziona l'opportuno elemento nelle caselle combinate
+                    MinefieldComboBox.SelectedIndex = settingsOptions[0];
+                    ModalityComboBox.SelectedIndex = settingsOptions[1];
+                    DifficultyComboBox.SelectedIndex = settingsOptions[2];
+                    // si impostano i valori dei controlli di scorrimento
+                    MinefieldLength.Value = settingsOptions[3];
+                    MinefieldHeight.Value = settingsOptions[4];
+                    MinefieldMines.Value = settingsOptions[5];
+                }
+                catch
+                {
+                    // in caso di errore viene selezionato il primo elemento delle caselle combinate
+                    MinefieldComboBox.SelectedIndex = 0;
+                    ModalityComboBox.SelectedIndex = 0;
+                    DifficultyComboBox.SelectedIndex = 0;
+                }
         }
 
         // Proprietà che restituisce la casella combinata dei tipi di campo minato selezionabili

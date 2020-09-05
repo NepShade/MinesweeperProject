@@ -295,53 +295,13 @@ namespace MinesweeperGUI
         // Metodo che crea e restituisce un memento delle impostazioni
         internal IMemento SaveState()
         {
-            // lista contenente le opzioni selezionate dall'utente
-            List<int> settingsOptions = new List<int>
-            {
-                // si memorizzano gli indici degli elementi selezionati nelle caselle combinate
-                _settings.MinefieldComboBox.SelectedIndex,
-                _settings.ModalityComboBox.SelectedIndex,
-                _settings.DifficultyComboBox.SelectedIndex,
-                // si memorizzano i valori dei controlli di scorrimento
-                (int)_settings.MinefieldLength.Value,
-                (int)_settings.MinefieldHeight.Value,
-                (int)_settings.MinefieldMines.Value
-            };
-
-            return new SettingsMemento(settingsOptions.ToArray());
+            return _settings.SaveState();
         }
 
         // Metodo che ripristina le opzioni selezionate in precedenza dall'utente
         internal void RestoreState(IMemento memento)
         {
-            if (memento != null)
-                try
-                {
-                    // si converte il memento nel tipo opportuno per poi acquisirne lo stato memorizzato
-                    SettingsMemento settingsMemento = (SettingsMemento)memento;
-                    int[] settingsOptions = settingsMemento.GetState();
-
-                    // viene selezionato l'opportuno elemento nelle caselle combinate
-                    _settings.MinefieldComboBox.SelectedIndex = settingsOptions[0];
-                    _settings.ModalityComboBox.SelectedIndex = settingsOptions[1];
-                    _settings.DifficultyComboBox.SelectedIndex = settingsOptions[2];
-
-                    // se il nome della difficoltà appena impostata corrisponde a quella 'personalizzata'
-                    // allora si impostano i valori dei controlli di scorrimento
-                    if (CustomDifficulty.Equals(_settings.DifficultyComboBox.Text))
-                    {
-                        _settings.MinefieldLength.Value = settingsOptions[3];
-                        _settings.MinefieldHeight.Value = settingsOptions[4];
-                        _settings.MinefieldMines.Value = settingsOptions[5];
-                    }
-                }
-                catch
-                {
-                    // in caso di errore viene selezionato il primo elemento delle caselle combinate
-                    _settings.MinefieldComboBox.SelectedIndex = 0;
-                    _settings.ModalityComboBox.SelectedIndex = 0;
-                    _settings.DifficultyComboBox.SelectedIndex = 0;
-                }
+            _settings.RestoreState(memento);
         }
 
         // Metodo che consente di visualizzare il form delle impostazioni

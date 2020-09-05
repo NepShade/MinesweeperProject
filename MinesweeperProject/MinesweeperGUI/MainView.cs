@@ -61,10 +61,13 @@ namespace MinesweeperGUI
             // si segnala che una zona interagibile nel form è stata cliccata dall'utente
             if (e.Button == MouseButtons.Left || e.Button == MouseButtons.Right)
                 if (InteractableZoneClick != null)
-                    try { InteractableZoneClick(this, new InteractableZoneEventArgs(zoneClicked.X,
-                                                                                      zoneClicked.Y,
-                                                                                      zoneClicked.Status,
-                                                                                      e.Button)); }
+                    try
+                    {
+                        InteractableZoneClick(this, new InteractableZoneEventArgs(zoneClicked.X,
+                                                                                  zoneClicked.Y,
+                                                                                  zoneClicked.Status,
+                                                                                  e.Button));
+                    }
                     catch { }
         }
 
