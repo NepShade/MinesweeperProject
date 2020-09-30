@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainView));
             this._gameButton = new System.Windows.Forms.Button();
             this._minesCounterLabel = new System.Windows.Forms.Label();
             this._minesweeperMenuStrip = new System.Windows.Forms.MenuStrip();
@@ -86,25 +87,25 @@
             // _newToolStripMenuItem
             // 
             this._newToolStripMenuItem.Name = "_newToolStripMenuItem";
-            this._newToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this._newToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
             this._newToolStripMenuItem.Text = "Nuova";
             // 
             // _settingsToolStripMenuItem
             // 
             this._settingsToolStripMenuItem.Name = "_settingsToolStripMenuItem";
-            this._settingsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this._settingsToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
             this._settingsToolStripMenuItem.Text = "Configura";
             // 
             // _rulesToolStripMenuItem
             // 
             this._rulesToolStripMenuItem.Name = "_rulesToolStripMenuItem";
-            this._rulesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this._rulesToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
             this._rulesToolStripMenuItem.Text = "Regole";
             // 
             // _exitToolStripMenuItem
             // 
             this._exitToolStripMenuItem.Name = "_exitToolStripMenuItem";
-            this._exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this._exitToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
             this._exitToolStripMenuItem.Text = "Esci";
             // 
             // _infoToolStripMenuItem
@@ -139,6 +140,7 @@
             this.Controls.Add(this._minesweeperMenuStrip);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this._minesweeperMenuStrip;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
