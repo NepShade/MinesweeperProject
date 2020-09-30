@@ -59,40 +59,40 @@ namespace MinesweeperGUI
                             Image = Properties.Resources.FlaggedZone;
                             break;
                         case ZoneState.IncorrectlyFlagged:
-                            Image = Properties.Resources.ErroredFlaggedZone;
+                            Image = Properties.Resources.IncorrectlyFlaggedZone;
                             break;
                         case ZoneState.Safe0:
-                            Image = Properties.Resources.UncoveredZone0;
+                            Image = Properties.Resources.SafeZone0;
                             break;
                         case ZoneState.Safe1:
-                            Image = Properties.Resources.UncoveredZone1;
+                            Image = Properties.Resources.SafeZone1;
                             break;
                         case ZoneState.Safe2:
-                            Image = Properties.Resources.UncoveredZone2;
+                            Image = Properties.Resources.SafeZone2;
                             break;
                         case ZoneState.Safe3:
-                            Image = Properties.Resources.UncoveredZone3;
+                            Image = Properties.Resources.SafeZone3;
                             break;
                         case ZoneState.Safe4:
-                            Image = Properties.Resources.UncoveredZone4;
+                            Image = Properties.Resources.SafeZone4;
                             break;
                         case ZoneState.Safe5:
-                            Image = Properties.Resources.UncoveredZone5;
+                            Image = Properties.Resources.SafeZone5;
                             break;
                         case ZoneState.Safe6:
-                            Image = Properties.Resources.UncoveredZone6;
+                            Image = Properties.Resources.SafeZone6;
                             break;
                         case ZoneState.Safe7:
-                            Image = Properties.Resources.UncoveredZone7;
+                            Image = Properties.Resources.SafeZone7;
                             break;
                         case ZoneState.Safe8:
-                            Image = Properties.Resources.UncoveredZone8;
+                            Image = Properties.Resources.SafeZone8;
                             break;
                         case ZoneState.Mined:
                             Image = Properties.Resources.MinedZone;
                             break;
                         case ZoneState.Exploded:
-                            Image = Properties.Resources.RedMinedZone;
+                            Image = Properties.Resources.ExplodedZone;
                             break;
                     }
                 }

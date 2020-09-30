@@ -124,11 +124,14 @@
   <data name="DefeatButton" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\DefeatButton.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="ErroredFlaggedZone" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ErroredFlaggedZone.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="ExplodedZone" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ExplodedZone.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="FlaggedZone" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\FlaggedZone.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="IncorrectlyFlaggedZone" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\IncorrectlyFlaggedZone.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="InitialButton" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\InitialButton.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -139,35 +142,32 @@
   <data name="MinesweeperRules" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\MinesweeperRules.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="RedMinedZone" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\RedMinedZone.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="SafeZone0" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SafeZone0.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="UncoveredZone0" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\UncoveredZone0.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="SafeZone1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SafeZone1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="UncoveredZone1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\UncoveredZone1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="SafeZone2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SafeZone2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="UncoveredZone2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\UncoveredZone2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="SafeZone3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SafeZone3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="UncoveredZone3" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\UncoveredZone3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="SafeZone4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SafeZone4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="UncoveredZone4" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\UncoveredZone4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="SafeZone5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SafeZone5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="UncoveredZone5" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\UncoveredZone5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="SafeZone6" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SafeZone6.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="UncoveredZone6" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\UncoveredZone6.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="SafeZone7" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SafeZone7.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="UncoveredZone7" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\UncoveredZone7.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="UncoveredZone8" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\UncoveredZone8.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="SafeZone8" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SafeZone8.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="VictoryButton" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\VictoryButton.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

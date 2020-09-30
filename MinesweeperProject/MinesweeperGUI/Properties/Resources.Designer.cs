@@ -83,9 +83,9 @@ namespace MinesweeperGUI.Properties {
         /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap ErroredFlaggedZone {
+        internal static System.Drawing.Bitmap ExplodedZone {
             get {
-                object obj = ResourceManager.GetObject("ErroredFlaggedZone", resourceCulture);
+                object obj = ResourceManager.GetObject("ExplodedZone", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -96,6 +96,16 @@ namespace MinesweeperGUI.Properties {
         internal static System.Drawing.Bitmap FlaggedZone {
             get {
                 object obj = ResourceManager.GetObject("FlaggedZone", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap IncorrectlyFlaggedZone {
+            get {
+                object obj = ResourceManager.GetObject("IncorrectlyFlaggedZone", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -133,9 +143,9 @@ namespace MinesweeperGUI.Properties {
         /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap RedMinedZone {
+        internal static System.Drawing.Bitmap SafeZone0 {
             get {
-                object obj = ResourceManager.GetObject("RedMinedZone", resourceCulture);
+                object obj = ResourceManager.GetObject("SafeZone0", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -143,9 +153,9 @@ namespace MinesweeperGUI.Properties {
         /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap UncoveredZone0 {
+        internal static System.Drawing.Bitmap SafeZone1 {
             get {
-                object obj = ResourceManager.GetObject("UncoveredZone0", resourceCulture);
+                object obj = ResourceManager.GetObject("SafeZone1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -153,9 +163,9 @@ namespace MinesweeperGUI.Properties {
         /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap UncoveredZone1 {
+        internal static System.Drawing.Bitmap SafeZone2 {
             get {
-                object obj = ResourceManager.GetObject("UncoveredZone1", resourceCulture);
+                object obj = ResourceManager.GetObject("SafeZone2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -163,9 +173,9 @@ namespace MinesweeperGUI.Properties {
         /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap UncoveredZone2 {
+        internal static System.Drawing.Bitmap SafeZone3 {
             get {
-                object obj = ResourceManager.GetObject("UncoveredZone2", resourceCulture);
+                object obj = ResourceManager.GetObject("SafeZone3", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -173,9 +183,9 @@ namespace MinesweeperGUI.Properties {
         /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap UncoveredZone3 {
+        internal static System.Drawing.Bitmap SafeZone4 {
             get {
-                object obj = ResourceManager.GetObject("UncoveredZone3", resourceCulture);
+                object obj = ResourceManager.GetObject("SafeZone4", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -183,9 +193,9 @@ namespace MinesweeperGUI.Properties {
         /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap UncoveredZone4 {
+        internal static System.Drawing.Bitmap SafeZone5 {
             get {
-                object obj = ResourceManager.GetObject("UncoveredZone4", resourceCulture);
+                object obj = ResourceManager.GetObject("SafeZone5", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -193,9 +203,9 @@ namespace MinesweeperGUI.Properties {
         /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap UncoveredZone5 {
+        internal static System.Drawing.Bitmap SafeZone6 {
             get {
-                object obj = ResourceManager.GetObject("UncoveredZone5", resourceCulture);
+                object obj = ResourceManager.GetObject("SafeZone6", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -203,9 +213,9 @@ namespace MinesweeperGUI.Properties {
         /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap UncoveredZone6 {
+        internal static System.Drawing.Bitmap SafeZone7 {
             get {
-                object obj = ResourceManager.GetObject("UncoveredZone6", resourceCulture);
+                object obj = ResourceManager.GetObject("SafeZone7", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -213,19 +223,9 @@ namespace MinesweeperGUI.Properties {
         /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap UncoveredZone7 {
+        internal static System.Drawing.Bitmap SafeZone8 {
             get {
-                object obj = ResourceManager.GetObject("UncoveredZone7", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap UncoveredZone8 {
-            get {
-                object obj = ResourceManager.GetObject("UncoveredZone8", resourceCulture);
+                object obj = ResourceManager.GetObject("SafeZone8", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

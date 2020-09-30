@@ -122,58 +122,58 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\CoveredZone.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\DefeatButton.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\ErroredFlaggedZone.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\FlaggedZone.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\InitialButton.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\MinedZone.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\MinesweeperRules.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\RedMinedZone.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\UncoveredZone0.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\UncoveredZone1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\UncoveredZone2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\UncoveredZone3.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\UncoveredZone4.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\UncoveredZone5.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\UncoveredZone6.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\UncoveredZone7.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\UncoveredZone8.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\VictoryButton.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CoveredZone.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ExplodedZone.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FlaggedZone.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IncorrectlyFlaggedZone.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MinedZone.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SafeZone0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SafeZone1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SafeZone2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SafeZone3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SafeZone4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SafeZone5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SafeZone6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SafeZone7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SafeZone8.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
